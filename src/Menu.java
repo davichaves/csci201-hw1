@@ -5,37 +5,45 @@ import java.util.StringTokenizer;
 public class Menu {
 	private static Scanner s;
 	private static float [] arrayInput;
-
-	private static void getInput(int n){
-		if(n==1){
-			System.out.println("Enter values in the following format: <x,y,z>");
+	private static boolean badInput;
+	
+	private static void getInput(int n){  	
+		do {
+			System.out.print("Enter values in the following format: <x,y,z> ");
 			String myInput = s.next();
 			try {
 				checkingInput(myInput);
 			} catch (BadInputException bie) {
+				badInput = true;
 				System.out.println(bie.getMessage());
 			}
-			for(int i = 0; i < 3; i++){
-				System.out.println(arrayInput[i]);
-			}
-//			System.out.println("Is this a Vector or a Point?");
-		} else {
-			System.out.println("Enter values in the following format: <x,y,z>");
-//			System.out.println("Is this a Vector or a Point?");
+		} while(badInput);
+		for(int i = 0; i < 3; i++){
+			System.out.println(arrayInput[i]);
 		}
+//		System.out.println("Is this a Vector or a Point?");
 	}
 	private static void checkingInput(String input) throws BadInputException {
-		input = input.substring(1, myInput.length()-1);
+		if(input.charAt(0) != '<') throw new BadInputException();
+		if(input.charAt(input.length()-1) != '>') throw new BadInputException();
+		if(input.length()<3) throw new BadInputException();
+		input = input.substring(1, input.length()-1);
 		StringTokenizer tokenizer = new StringTokenizer(input, ",");
 		int numberOfTokens = tokenizer.countTokens();
-		if(numberOfTokens > 3){
+		if(numberOfTokens > 3) {
 			throw new BadInputException();
 		}
 		String [] myInputs = new String[numberOfTokens];
 		for(int i = 0; i<numberOfTokens; i++){
 			myInputs[i] = tokenizer.nextToken();
+			try {
+				Float.parseFloat(myInputs[i]);
+			} catch(NumberFormatException e) {
+				throw new BadInputException();
+			}
 			arrayInput[i] = Float.parseFloat(myInputs[i]);
 		}
+		badInput = false;
 	}
 	
 	public static void main(String [] args){
