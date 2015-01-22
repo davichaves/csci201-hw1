@@ -21,7 +21,15 @@ public class Menu {
 		for(int i = 0; i < 3; i++){
 			System.out.println(arrayInput[i]);
 		}
-//		System.out.println("Is this a Vector or a Point?");
+		String type;
+		do {
+			System.out.print("Is this a Vector or a Point? ");
+			type = s.next();
+			if (type.equalsIgnoreCase("vector") || type.equalsIgnoreCase("point")){
+				break;
+			}
+			System.out.println("Bad input!!!");
+		} while(true);
 	}
 	private static void checkingInput(String input) throws BadInputException {
 		if(input.charAt(0) != '<') throw new BadInputException();
