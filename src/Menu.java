@@ -6,6 +6,8 @@ public class Menu {
 	private static Scanner s;
 	private static float [] arrayInput;
 	private static boolean badInput;
+	private static Object [] o = new Object[2];
+	private static boolean [] objectAssigned = new boolean[2];
 	
 	private static void getInput(int n){  	
 		do {
@@ -25,7 +27,14 @@ public class Menu {
 		do {
 			System.out.print("Is this a Vector or a Point? ");
 			type = s.next();
-			if (type.equalsIgnoreCase("vector") || type.equalsIgnoreCase("point")){
+			if (type.equalsIgnoreCase("point")){
+				objectAssigned[n-1] = true;
+				o[n-1] = new Point3D(arrayInput);
+				break;
+			}
+			if (type.equalsIgnoreCase("vector")){
+				objectAssigned[n-1] = true;
+				o[n-1] = new Vector3D(arrayInput);
 				break;
 			}
 			System.out.println("Bad input!!!");
@@ -57,8 +66,15 @@ public class Menu {
 	public static void main(String [] args){
 		s = new Scanner(System.in);
 		arrayInput = new float[3];
+		objectAssigned[0] = objectAssigned[1] = false;
 		while(true){
-			System.out.println("1: Change value of null\n2: Change value of null");
+			for(int i = 0; i < 2; i++){
+				if(objectAssigned[i]){
+					System.out.println((i+1) + ": Change value of " + o[i].toString());
+				} else {
+					System.out.println((i+1) + ": Change value of null");
+				}
+			}
 			System.out.println("3: Add the objects.\n4: Subtract the objects.");
 			System.out.println("5: Find the angle between the objects.\n6: Quit");
 			System.out.print("What do you want to do? ");
