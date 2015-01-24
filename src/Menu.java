@@ -71,7 +71,7 @@ public class Menu {
 	}
 	
 	public static void getAngle(){
-		if(object1Assigned == false || object2Assigned == false) System.out.println("Assign the objects!");
+		if(object1Assigned == false || object2Assigned == false) System.out.println("Assign both objects!");
 		else {
 			if(o[0].returnType() == 2 && o[1].returnType() == 2){
 				double [] length = new double[2];
@@ -84,6 +84,36 @@ public class Menu {
 				System.out.println("The angle between the two objects is: " + angle);
 				//take angles
 			} else System.out.println("Can't get angle out of a point!");
+		}
+	}
+	
+	public static void sum(){
+		if(object1Assigned == false || object2Assigned == false) System.out.println("Assign both objects!");
+		else {
+			if(o[0].returnType() == 1 && o[1].returnType() == 1){
+				System.out.println("Invalid operation!");
+			} else if(o[0].returnType() == 1 && o[1].returnType() == 2){
+				
+			} else if(o[0].returnType() == 2 && o[1].returnType() == 1){
+				System.out.println("Invalid operation!");
+			} else if(o[0].returnType() == 2 && o[1].returnType() == 2){
+				
+			}
+		}
+	}
+	
+	public static void subtract(){
+		if(object1Assigned == false || object2Assigned == false) System.out.println("Assign both objects!");
+		else {
+			if(o[0].returnType() == 1 && o[1].returnType() == 1){
+				
+			} else if(o[0].returnType() == 1 && o[1].returnType() == 2){
+				
+			} else if(o[0].returnType() == 2 && o[1].returnType() == 1){
+				System.out.println("Invalid operation!");
+			} else if(o[0].returnType() == 2 && o[1].returnType() == 2){
+				
+			}
 		}
 	}
 	
@@ -111,15 +141,9 @@ public class Menu {
 			} else if (option == 1 || option == 2){
 				getInput(option);
 			} else if (option == 3){
-				if(object1Assigned == false || object2Assigned == false) System.out.println("Assign the objects!");
-				else {
-					//code for sum here
-				}
+				sum();
 			} else if (option == 4){
-				if(object1Assigned == false || object2Assigned == false) System.out.println("Assign the objects!");
-				else {
-					//code for subtract here
-				}
+				subtract();
 			} else if (option == 5){
 				getAngle();
 			}
