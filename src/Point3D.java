@@ -1,7 +1,9 @@
 
 public class Point3D extends Object {
-	public Point3D(float[] parameters){
-		xyz = parameters;
+	public Point3D(double[] parameters){
+		for(int i =0; i < 3; i++){
+			xyz[i] = parameters[i];
+		}
 		isAssigned = true;
 	}
 	public String toString(){

@@ -1,7 +1,9 @@
 
 public class Vector3D extends Object {
-	public Vector3D(float[] parameters){
-		xyz = parameters;
+	public Vector3D(double[] parameters){
+		for (int i =0; i < 3; i++) {
+			xyz[i] = parameters[i];
+		}
 		isAssigned = true;
 	}
 	public String toString(){
