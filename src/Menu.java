@@ -93,11 +93,13 @@ public class Menu {
 			if(o[0].returnType() == 1 && o[1].returnType() == 1){
 				System.out.println("Invalid operation!");
 			} else if(o[0].returnType() == 1 && o[1].returnType() == 2){
-				
+				System.out.print("The result is the point: <" + (o[0].xyz[0]+o[1].xyz[0]) + ",");
+				System.out.println((o[0].xyz[1]+o[1].xyz[1]) + "," + (o[0].xyz[2]+o[1].xyz[2]) + ">");
 			} else if(o[0].returnType() == 2 && o[1].returnType() == 1){
 				System.out.println("Invalid operation!");
 			} else if(o[0].returnType() == 2 && o[1].returnType() == 2){
-				
+				System.out.print("The result is the vector: <" + (o[0].xyz[0]+o[1].xyz[0]) + ",");
+				System.out.println((o[0].xyz[1]+o[1].xyz[1]) + "," + (o[0].xyz[2]+o[1].xyz[2]) + ">");
 			}
 		}
 	}
@@ -106,13 +108,16 @@ public class Menu {
 		if(object1Assigned == false || object2Assigned == false) System.out.println("Assign both objects!");
 		else {
 			if(o[0].returnType() == 1 && o[1].returnType() == 1){
-				
+				System.out.print("The result is the vector: <" + (o[0].xyz[0]-o[1].xyz[0]) + ",");
+				System.out.println((o[0].xyz[1]-o[1].xyz[1]) + "," + (o[0].xyz[2]-o[1].xyz[2]) + ">");
 			} else if(o[0].returnType() == 1 && o[1].returnType() == 2){
-				
+				System.out.print("The result is the point: <" + (o[0].xyz[0]-o[1].xyz[0]) + ",");
+				System.out.println((o[0].xyz[1]-o[1].xyz[1]) + "," + (o[0].xyz[2]-o[1].xyz[2]) + ">");
 			} else if(o[0].returnType() == 2 && o[1].returnType() == 1){
 				System.out.println("Invalid operation!");
 			} else if(o[0].returnType() == 2 && o[1].returnType() == 2){
-				
+				System.out.print("The result is the vector: <" + (o[0].xyz[0]-o[1].xyz[0]) + ",");
+				System.out.println((o[0].xyz[1]-o[1].xyz[1]) + "," + (o[0].xyz[2]-o[1].xyz[2]) + ">");
 			}
 		}
 	}
