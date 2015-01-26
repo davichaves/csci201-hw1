@@ -76,11 +76,11 @@ public class Menu {
 			if(o[0].returnType() == 2 && o[1].returnType() == 2){
 				double [] length = new double[2];
 				for(int i = 0; i < 2; i++){
-					length[i] = Math.sqrt((o[0].xyz[0]*o[0].xyz[0]) + (o[0].xyz[1]*o[0].xyz[1]) + (o[0].xyz[2]*o[0].xyz[2]));
+					length[i] = Math.sqrt((o[i].x()*o[i].x()) + (o[i].y()*o[i].y()) + (o[i].z()*o[i].z()));
 				}
-				double dotProd = (o[0].xyz[0]*o[1].xyz[0]) + (o[0].xyz[1]*o[1].xyz[1]) + (o[0].xyz[2]*o[1].xyz[2]);
+				double dotProd = (o[0].x()*o[1].x()) + (o[0].y()*o[1].y()) + (o[0].z()*o[1].z());
 				double angle =  Math.acos((dotProd)/(length[0]*length[1]));
-				angle = (angle/(2*Math.PI))*360;
+				angle = Math.toDegrees(angle);
 				System.out.println("The angle between the two objects is: " + angle);
 				//take angles
 			} else System.out.println("Can't get angle out of a point!");
@@ -126,6 +126,7 @@ public class Menu {
 		s = new Scanner(System.in);
 		arrayInput = new double[3];
 		object1Assigned = object2Assigned = false;
+		int option = 0;
 		while(true){
 			if(object1Assigned){
 				System.out.println("1: Change value of " + o[0].toString());
@@ -140,7 +141,12 @@ public class Menu {
 			System.out.println("3: Add the objects.\n4: Subtract the objects.");
 			System.out.println("5: Find the angle between the objects.\n6: Quit");
 			System.out.print("What do you want to do? ");
-			int option = s.nextInt();
+			String selection = s.next();
+			try {
+			    option = Integer.parseInt(selection);
+			} catch (NumberFormatException e) {
+				System.out.println("Use an int!");
+			}
 			if (option == 6){
 				break;
 			} else if (option == 1 || option == 2){
@@ -151,6 +157,8 @@ public class Menu {
 				subtract();
 			} else if (option == 5){
 				getAngle();
+			} else {
+				System.out.println("No option selected!");
 			}
 		}
 		System.out.println("Bye!");
